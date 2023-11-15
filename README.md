@@ -24,18 +24,90 @@ Another aspect is that the data set should be formatted in such a way that more 
 
 
 ## ALGORITHM:
-Importing the libraries
-Importing the dataset
-Taking care of missing data
-Encoding categorical data
-Normalizing the data
-Splitting the data into test and train
+1. Importing the libraries
+2. Importing the dataset
+3. Taking care of missing data
+4. Encoding categorical data
+5. Normalizing the data
+6. Splitting the data into test and train
 
 ## PROGRAM:
-/Write your code here/
+# DEVELOPED BY:NIHIL K K
+# REGISTER NO:212221223002
+```
+import pandas as pd
 
+df=pd.read_csv("/content/Churn_Modelling.csv")
+
+df.head()
+
+df.isnull().sum()
+
+df.drop(["RowNumber","Age","Gender","Geography","Surname"],inplace=True,axis=1)
+
+print(df)
+
+x=df.iloc[:,:-1].values
+
+y=df.iloc[:,-1].values
+
+print(x)
+
+print(y)
+
+from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler()
+
+df1 = pd.DataFrame(scaler.fit_transform(df))
+
+print(df1)
+
+from sklearn.model_selection import train_test_split
+
+xtrain,ytrain,xtest,ytest=train_test_split(x,y,test_size=0.2,random_state=2)
+
+print(xtrain)
+
+print(len(xtrain))
+
+print(xtest)
+
+print(len(xtest))
+
+from sklearn.preprocessing import StandardScaler
+
+sc = StandardScaler()
+
+df1 = sc.fit_transform(df)
+
+print(df1)
+```
 ## OUTPUT:
-/ Show the result/
+# df.head():
+![Screenshot 2023-08-29 171824](https://github.com/chandramohan3/Ex.No.1---Data-Preprocessing/assets/142579775/c0908383-ad6b-4ab8-bc47-a7e271798bc9)
 
-## RESULT
-/Type your result here/
+# df.isnull().sum():
+![Screenshot 2023-08-29 171834](https://github.com/chandramohan3/Ex.No.1---Data-Preprocessing/assets/142579775/22f0e4f6-2f01-4e3d-b144-d31113d8175c)
+
+# df value:
+![Screenshot 2023-08-29 171845](https://github.com/chandramohan3/Ex.No.1---Data-Preprocessing/assets/142579775/ad9960b6-eac6-4226-a084-8b6c434b9296)
+
+# VALUES OF INPUT AND OUTPUT DATA ON VAR X AND Y:
+![Screenshot 2023-08-29 171852](https://github.com/chandramohan3/Ex.No.1---Data-Preprocessing/assets/142579775/c9c014f7-b7a6-4961-9c81-6d2324ac1549)
+![Screenshot 2023-08-29 171858](https://github.com/chandramohan3/Ex.No.1---Data-Preprocessing/assets/142579775/c039005a-5cf0-4728-8c32-3e36baad837d)
+
+# NORMALIZING DATA:
+![Screenshot 2023-08-29 171906](https://github.com/chandramohan3/Ex.No.1---Data-Preprocessing/assets/142579775/b5937e31-da59-489f-bac8-e010f0143a20)
+
+# X_TRAIN AND Y_TRAIN VALUES:
+![Screenshot 2023-08-29 171914](https://github.com/chandramohan3/Ex.No.1---Data-Preprocessing/assets/142579775/b42ca41c-eb8d-411e-b522-e0d680e4593a)
+
+# X AND Y VALUES:
+![Screenshot 2023-08-29 171924](https://github.com/chandramohan3/Ex.No.1---Data-Preprocessing/assets/142579775/e8ad1648-85de-4e0f-b754-00c0cb4403cc)
+
+# X_TEST AND Y_TEST VALUES:
+![Screenshot 2023-08-29 171935](https://github.com/chandramohan3/Ex.No.1---Data-Preprocessing/assets/142579775/ce866d24-b420-4092-b67a-c1cdc4400073)
+
+## RESULT:
+Thus,the program to perform Data preprocessing in a data set downloaded from Kaggle is implemented successfully .
